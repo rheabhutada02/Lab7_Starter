@@ -1,6 +1,6 @@
 # Lab 7 - Starter
 
-## Name:
+## Names:
 Rhea Bhutada
 
 Daniel Hernandez
