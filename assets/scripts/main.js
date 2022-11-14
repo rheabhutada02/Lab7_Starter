@@ -45,17 +45,14 @@ function initializeServiceWorker() {
   // We first must register our ServiceWorker here before any of the code in
   // sw.js is executed.
   // B1. TODO - Check if 'serviceWorker' is supported in the current browser
-  if ('serviceWorker' in navigator) {
-    // Supported!
-  
-    
+  if ('serviceWorker' in navigator) {    
     // B2. TODO - Listen for the 'load' event on the window object.
     window.addEventListener ('load', async (event) => {
       try {
         // Steps B3-B6 will be *inside* the event listener's function created in B2
         // B3. TODO - Register './sw.js' as a service worker (The MDN article
         //            "Using Service Workers" will help you here)
-        const registration = await navigator.serviceWorker.register("../../Lab7_Starter/sw.js");
+        await navigator.serviceWorker.register("../../Lab7_Starter/sw.js");
         // B4. TODO - Once the service worker has been successfully registered, console
         //            log that it was successful.
         console.log("Registration succeeded!");
@@ -96,7 +93,7 @@ async function getRecipes() {
   //            function (we call these callback functions). That function will
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
-  const myPromise = new Promise(async (resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     /**************************/
     // A4-A11 will all be *inside* the callback function we passed to the Promise
     // we're returning
@@ -117,7 +114,6 @@ async function getRecipes() {
           //            NOTE: .json() is ALSO asynchronous, so you will need to use
           //            "await" again
           .then(async (response) => await response.json());
-          console.log(newResponse);
           // A8. TODO - Add the new recipe to the recipes array
           fetchedRecipes.push(newResponse);
           // A9. TODO - Check to see if you have finished retrieving all of the recipes,
